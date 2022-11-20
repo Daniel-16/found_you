@@ -24,7 +24,7 @@ form.addEventListener('submit', function (e) {
     }).then(function (data) {
         // checks if user can login
         if (data['success'] == true) {
-            location.replace('index.html')
+            location.replace('find.html')
         }
         else if(data['error']=="Incorrect password"){
             alert(data["error"])
@@ -65,7 +65,7 @@ form.addEventListener('submit', function (e) {
                 return response.json()
             })
                 .then(function (data) {
-                    location.replace('index.html')
+                    location.replace('find.html')
 
                 })
                 .catch((err) => {
