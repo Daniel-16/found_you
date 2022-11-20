@@ -11,8 +11,8 @@ form.addEventListener("submit", function (e) {
   fetch("https://phone-tracker.onrender.com/api/login", {
     method: "POST",
     body: JSON.stringify({
-      phoneNumber: phoneNumber,
-      password: password,
+      phoneNumber,
+      password,
     }),
     headers: {
       "Content-Type": "application/json",
