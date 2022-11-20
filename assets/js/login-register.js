@@ -51,7 +51,7 @@ form.addEventListener('submit', function (e) {
                 "body": JSON.stringify({
 
                     "phoneNumber": phoneNumber,
-                    "userLat": localStorage.getItem('longitude'),
+                    "userLat": localStorage.getItem('latitude'),
                     "userLong": localStorage.getItem('longitude'),
                     "password": password
 
