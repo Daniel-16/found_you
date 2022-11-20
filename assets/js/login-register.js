@@ -6,73 +6,70 @@ form.addEventListener("submit", function (e) {
   var password = document.getElementById("password").value;
   localStorage.setItem("phoneNumber", phoneNumber);
   localStorage.setItem("password", password);
-
-  // Log in
   fetch("https://phone-tracker.onrender.com/api/login", {
     method: "POST",
-    body: JSON.stringify({
-      phoneNumber,
-      password,
-    }),
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
     },
+    body: JSON.stringify({
+      phoneNumber,
+      password,
+    }),
   })
-    .then(function (response) {
-      return response.json();
+    .then((res) => {
+      return res.json();
     })
-    .then(function (data) {
-      // checks if user can login
-      if (data["success"] == true) {
-        location.replace("find.html");
-        console.log(data);
-      } else if (data["error"] == "Incorrect password") {
-        alert(data["error"]);
-      } else {
-        //  Gets location of user
-        if (navigator.geolocation) {
-          navigator.geolocation.watchPosition(
-            showExactPosition,
-            errorOnPosition
-          );
-        }
-
-        function showExactPosition(position) {
-          localStorage.setItem("latitude", position.coords.latitude);
-          localStorage.setItem("longitude", position.coords.longitude);
-        }
-
-        function errorOnPosition() {
-          console.error("Error on loading location");
-        }
-
-        // Register the user
-        fetch("https://phone-tracker.onrender.com/api/signup", {
-          method: "POST",
-          body: JSON.stringify({
-            phoneNumber: phoneNumber,
-            userLat: localStorage.getItem("latitude"),
-            userLong: localStorage.getItem("longitude"),
-            password: password,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        })
-          .then(function (response) {
-            return response.json();
-          })
-          .then(function (data) {
-            location.replace("find.html");
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-      }
+    .then((data) => {
+      console.log(data);
+      location.replace("find.html");
     })
     .catch((err) => {
       console.error(err);
+      alert("Sorry! An unexpected error has occured");
     });
+
+  // Log in
+  //   fetch("https://phone-tracker.onrender.com/api/login", {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       phoneNumber,
+  //       password,
+  //     }),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Accept: "application/json",
+  //     },
+  //   })
+  //     .then(function (response) {
+  //       return response.json();
+  //     })
+  //     .then(function (data) {
+  //       console.log(data);
+  //       function showExactPosition(position) {
+  //         localStorage.setItem("latitude", position.coords.latitude);
+  //         localStorage.setItem("longitude", position.coords.longitude);
+  //       }
+  //       //  Gets location of user
+  //       if (navigator.geolocation) {
+  //         navigator.geolocation.watchPosition(showExactPosition, errorOnPosition);
+  //       }
+
+  //       function errorOnPosition() {
+  //         console.error("Error on loading location");
+  //       }
+  //   checks if user can login
+  //   if (data["success"] === true) {
+  //     location.replace("find.html");
+  //     console.log(data);
+  //   } else if (data["error"] === "Incorrect password") {
+  //     alert(data["error"]);
+  //   } else {
+  //     // Register the user
+
+  //   }
+  // })
+  // .catch((err) => {
+  //   console.error(err);
+  // });
 });
