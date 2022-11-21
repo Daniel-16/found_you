@@ -1,12 +1,13 @@
 
 
     body,html{
-    padding: 0;
+    /* padding: 0;
     background-image: url("../images/pexels-tyler-lastovich-699122.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
-    position: relative;
+    position: relative; */
+    background-color: #353b48;
     }
 
     .searchbar{
