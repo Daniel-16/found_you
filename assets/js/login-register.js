@@ -26,7 +26,7 @@ form.addEventListener("submit", function (e) {
     })
     .catch((err) => {
       console.error(err);
-      alert("Sorry! An unexpected error has occured");
+      alert(err.message);
     });
 
   // Log in

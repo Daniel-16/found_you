@@ -31,10 +31,11 @@ form.addEventListener("submit", (e) => {
       })
       .then((data) => {
         console.log(data);
-        location.replace("find.html");
+        location.replace("welcome.html");
       })
       .catch((err) => {
         console.error(err);
+        alert(err.message)
       });
   }
 });
