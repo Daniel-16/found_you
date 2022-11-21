@@ -9,7 +9,7 @@ form.addEventListener("submit", (e) => {
     localStorage.setItem("userLong", position.coords.longitude);
   }
   function errorOnPosition() {
-    console.error("Could not get your current location")
+    console.error("Could not get your current location");
   }
   if (navigator.geolocation) {
     navigator.geolocation.watchPosition(showPosition, errorOnPosition);
@@ -31,9 +31,11 @@ form.addEventListener("submit", (e) => {
       })
       .then((data) => {
         console.log(data);
+        location.replace("welcome.html");
       })
       .catch((err) => {
         console.error(err);
+        alert(err.message)
       });
   }
 });
