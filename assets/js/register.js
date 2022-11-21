@@ -31,11 +31,15 @@ form.addEventListener("submit", (e) => {
       })
       .then((data) => {
         console.log(data);
-        location.replace("welcome.html");
+        if (data.err === "This user already exists") {
+          alert(data.err);
+        } else {
+          location.replace("welcome.html");
+        }
       })
       .catch((err) => {
         console.error(err);
-        alert(err.message)
+        alert(err.message);
       });
   }
 });
