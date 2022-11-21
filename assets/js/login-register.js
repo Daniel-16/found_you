@@ -22,7 +22,7 @@ form.addEventListener("submit", function (e) {
     })
     .then((data) => {
       console.log(data);
-      location.replace("find.html");
+      location.replace("userFind.html");
     })
     .catch((err) => {
       console.error(err);
