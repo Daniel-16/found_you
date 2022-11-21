@@ -22,7 +22,12 @@ form.addEventListener("submit", function (e) {
     })
     .then((data) => {
       console.log(data);
-      location.replace("userFind.html");
+      //   location.replace("userFind.html");
+      if (data.error === "Incorrect phone number" || data.error === "Incorrect password") {
+        alert("Incorrect login details");
+      } else {
+        location.replace("userFind.html");
+      }
     })
     .catch((err) => {
       console.error(err);
